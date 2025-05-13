@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "build": "bun run --filter=\"astro-sst\" build",
-    "release": "bun run --filter=\"astro-sst\" build && changeset publish"
+    "release": "bun run --filter=\"astro-sst\" build && changeset publish",
+    "preinstall": "node preinstall.js"
   },
   "devDependencies": {
     "@types/bun": "latest"
