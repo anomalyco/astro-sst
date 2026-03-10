@@ -43,6 +43,6 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.146",
     "@types/set-cookie-parser": "^2.4.10",
-    "astro": "^5.0.8"
+    "astro": "^5.16.4"
   }
 }

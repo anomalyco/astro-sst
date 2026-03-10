@@ -7,10 +7,13 @@ import type {
   Context,
 } from "aws-lambda";
 import { NodeApp, applyPolyfills } from "astro/app/node";
+import { setGetEnv } from "astro/env/setup";
 import type { IntegrationConfig } from "./lib/build-meta";
 import { InternalEvent, convertFrom, convertTo } from "./lib/event-mapper.js";
 import { debug } from "./lib/logger.js";
 import { ResponseStream } from "./lib/types";
+
+setGetEnv((key) => process.env[key]);
 
 type RequestHandler = (
   event: APIGatewayProxyEventV2,
@@ -43,7 +46,7 @@ function createRequest(internalEvent: InternalEvent) {
     headers: internalEvent.headers,
     body: ["GET", "HEAD"].includes(internalEvent.method)
       ? undefined
-      : internalEvent.body,
+      : (internalEvent.body as BodyInit),
   };
   return new Request(requestUrl, requestProps);
 }

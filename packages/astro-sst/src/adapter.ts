@@ -76,6 +76,7 @@ export default function createIntegration(
             staticOutput: "stable",
             serverOutput: "stable",
             sharpImageService: "stable",
+            envGetSecret: "stable",
           },
         });
       },
