@@ -13,9 +13,9 @@ export default function createIntegration(
 ): AstroIntegration {
   debug("astroVersion", ASTRO_PACKAGE.version);
 
-  if (astroMajorVersion < 5) {
+  if (astroMajorVersion < 6) {
     throw new Error(
-      "astro-sst requires Astro 5 or newer. Please upgrade your Astro app. Alternatively, use v2 of astro-sst by pinning to `astro-sst@two`."
+      "astro-sst requires Astro 6 or newer. Please upgrade your Astro app. Alternatively, use v3 of astro-sst by pinning to `astro-sst@three`."
     );
   }
 
@@ -64,9 +64,8 @@ export default function createIntegration(
         BuildMeta.setBuildOutput(buildOutput);
         setAdapter({
           name: PACKAGE_NAME,
-          serverEntrypoint: `${PACKAGE_NAME}/entrypoint`,
-          args: { responseMode: entrypointParameters.responseMode },
-          exports: ["handler"],
+          entrypointResolution: "auto",
+          serverEntrypoint: `${PACKAGE_NAME}/entrypoint/${entrypointParameters.responseMode}`,
           adapterFeatures: {
             edgeMiddleware: false,
             buildOutput: buildOutput,

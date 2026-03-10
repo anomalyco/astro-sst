@@ -20,7 +20,8 @@
   "bugs": "https://github.com/sst/astro-sst/issues",
   "exports": {
     ".": "./dist/adapter.js",
-    "./entrypoint": "./dist/entrypoint.js",
+    "./entrypoint/buffer": "./dist/entrypoint/buffer.js",
+    "./entrypoint/stream": "./dist/entrypoint/stream.js",
     "./build-meta": "./dist/lib/build-meta.js",
     "./package.json": "./package.json"
   },
@@ -37,12 +38,14 @@
   "scripts": {
     "build": "tsc"
   },
+  "peerDependencies": {
+    "astro": "^6.0.0"
+  },
   "dependencies": {
     "set-cookie-parser": "^2.7.1"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.146",
-    "@types/set-cookie-parser": "^2.4.10",
-    "astro": "^5.0.8"
+    "@types/set-cookie-parser": "^2.4.10"
   }
 }
