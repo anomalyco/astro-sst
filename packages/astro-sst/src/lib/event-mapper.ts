@@ -252,10 +252,9 @@ function convertToApigV2StreamingResult({
   const metadata = {
     statusCode,
     headers,
+    cookies: cookies.length > 0 ? stringifyCookies(cookies) : undefined,
   };
-  if (cookies.length > 0) {
-    metadata.headers["set-cookie"] = stringifyCookies(cookies).join(", ");
-  }
+
   responseStream = awslambda.HttpResponseStream.from(responseStream, metadata);
 
   if (!body) {
