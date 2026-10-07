@@ -54,6 +54,9 @@ const commonBinaryMimeTypes = new Set([
   "application/x-tar",
   "application/x-zip",
   "application/zip",
+  // Map tiles
+  "application/vnd.mapbox-vector-tile",
+  "application/x-protobuf",
 ]);
 
 export function isBinaryContentType(contentType?: string | null) {
